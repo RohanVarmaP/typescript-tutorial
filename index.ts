@@ -14,11 +14,11 @@ let cashInRegister: number = 100
 let nextOrderId: number = 1
 const orderQueue: orderType[] = []
 
-function addNewPizza(pizzaObj: menuType) {
+function addNewPizza(pizzaObj: menuType): void {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName: string): orderType | null {
     if (!pizzaName) {
         console.error("Pizza name is required.")
         return null;
@@ -34,7 +34,7 @@ function placeOrder(pizzaName: string) {
     return newOrder
 }
 
-function completeOrder(orderId: number) {
+function completeOrder(orderId: number): orderType | null {
     const order: orderType | undefined = orderQueue.find(order => order.id === orderId)
     if (!order) {
         console.error("Order not found.")
@@ -44,7 +44,7 @@ function completeOrder(orderId: number) {
     return order
 }
 
-export function getPizzaDetail(detail: string | number) {
+export function getPizzaDetail(detail: string | number): menuType | null {
     if (typeof detail !== 'string' && typeof detail !== 'number') {
         console.error("Detail must be a string or a number.")
         return null;
