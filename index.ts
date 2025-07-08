@@ -1,4 +1,8 @@
-const menu = [
+type orderType = { id: number, pizza: { name: string, price: number }, status: string }
+
+type menuType = { name: string, price: number }
+
+const menu: menuType[] = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
     { name: "Hawaiian", price: 10 },
@@ -6,9 +10,9 @@ const menu = [
 ]
 let cashInRegister = 100
 let nextOrderId = 1
-const orderQueue: { id: number, pizza: { name: string, price: number }, status: string }[] = []
+const orderQueue: orderType[] = []
 
-function addNewPizza(pizzaObj: { name: string, price: number }) {
+function addNewPizza(pizzaObj: menuType) {
     menu.push(pizzaObj)
 }
 
@@ -17,19 +21,19 @@ function placeOrder(pizzaName: string) {
         console.error("Pizza name is required.")
         return null;
     }
-    const selectedPizza: { name: string, price: number } | undefined = menu.find(pizzaObj => pizzaObj.name === pizzaName)
+    const selectedPizza: menuType | undefined = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if (!selectedPizza) {
         console.error("Pizza not found.")
         return null;
     }
     cashInRegister += selectedPizza.price
-    const newOrder: { id: number, pizza: { name: string, price: number }, status: string } = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
+    const newOrder: orderType = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
     orderQueue.push(newOrder)
     return newOrder
 }
 
 function completeOrder(orderId: number) {
-    const order: { id: number, pizza: { name: string, price: number }, status: string } | undefined = orderQueue.find(order => order.id === orderId)
+    const order: orderType | undefined = orderQueue.find(order => order.id === orderId)
     if (!order) {
         console.error("Order not found.")
         return null;
