@@ -1,22 +1,34 @@
 type menuType = { id: number, name: string, price: number }
 
+type updatedMenuType = Partial<menuType>
+
 type orderStatusType = 'ordered' | 'completed'
 
 type orderType = { id: number, pizza: menuType, status: orderStatusType }
 
-const menu: menuType[] = [
-    { id: 1, name: "Margherita", price: 8 },
-    { id: 2, name: "Pepperoni", price: 10 },
-    { id: 3, name: "Hawaiian", price: 10 },
-    { id: 4, name: "Veggie", price: 9 }
-]
 let cashInRegister: number = 100
 let nextOrderId: number = 1
+let nextPizzaId: number = 1
 const orderQueue: orderType[] = []
 
-function addNewPizza(pizzaObj: menuType): void {
-    menu.push(pizzaObj)
+const menu: menuType[] = [
+    { id: nextPizzaId++, name: "Margherita", price: 8 },
+    { id: nextPizzaId++, name: "Pepperoni", price: 10 },
+    { id: nextPizzaId++, name: "Hawaiian", price: 10 },
+    { id: nextPizzaId++, name: "Veggie", price: 9 }
+]
+
+function addNewPizza(pizzaObj: Omit<menuType, 'id'>): void {
+    const newPizza: menuType = {
+        id: nextPizzaId++,
+        ...pizzaObj
+    }
+    menu.push(newPizza)
 }
+
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 function placeOrder(pizzaName: string): orderType | null {
     if (!pizzaName) {
@@ -64,9 +76,6 @@ export function getPizzaDetail(detail: string | number): menuType | null {
     return pizza;
 }
 
-addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
-addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
