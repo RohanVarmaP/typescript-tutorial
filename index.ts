@@ -1,6 +1,8 @@
-type orderType = { id: number, pizza: { name: string, price: number }, status: string }
-
 type menuType = { name: string, price: number }
+
+type orderStatusType = 'ordered' | 'completed'
+
+type orderType = { id: number, pizza: menuType, status: orderStatusType }
 
 const menu: menuType[] = [
     { name: "Margherita", price: 8 },
@@ -8,8 +10,8 @@ const menu: menuType[] = [
     { name: "Hawaiian", price: 10 },
     { name: "Veggie", price: 9 },
 ]
-let cashInRegister = 100
-let nextOrderId = 1
+let cashInRegister: number = 100
+let nextOrderId: number = 1
 const orderQueue: orderType[] = []
 
 function addNewPizza(pizzaObj: menuType) {
