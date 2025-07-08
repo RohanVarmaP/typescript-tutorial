@@ -26,6 +26,14 @@ function addNewPizza(pizzaObj: Omit<menuType, 'id'>): void {
     menu.push(newPizza)
 }
 
+function addToArray<T>(array: T[], item: T): T[] {
+    array.push(item)
+    return array
+}
+
+addToArray(menu, { id: nextPizzaId, name: "Chicken Bacon Ranch", price: 12 })
+addToArray<orderType>(orderQueue, { id: nextOrderId++, pizza: { id: nextPizzaId, name: "BBQ Chicken", price: 12 }, status: "completed" })
+
 addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
 addNewPizza({ name: "BBQ Chicken", price: 12 })
 addNewPizza({ name: "Spicy Sausage", price: 11 })
