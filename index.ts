@@ -6,32 +6,44 @@ const menu = [
 ]
 let cashInRegister = 100
 let nextOrderId = 1
-const orderQueue = []
+const orderQueue: { id: number, pizza: { name: string, price: number }, status: string }[] = []
 
-function addNewPizza(pizzaObj) {
+function addNewPizza(pizzaObj: { name: string, price: number }) {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName) {
-    const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
+function placeOrder(pizzaName: string) {
+    if (!pizzaName) {
+        console.error("Pizza name is required.")
+        return null;
+    }
+    const selectedPizza: { name: string, price: number } | undefined = menu.find(pizzaObj => pizzaObj.name === pizzaName)
+    if (!selectedPizza) {
+        console.error("Pizza not found.")
+        return null;
+    }
     cashInRegister += selectedPizza.price
-    const newOrder = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
+    const newOrder: { id: number, pizza: { name: string, price: number }, status: string } = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
     orderQueue.push(newOrder)
     return newOrder
 }
 
-function completeOrder(orderId) {
-    const order = orderQueue.find(order => order.id === orderId)
+function completeOrder(orderId: number) {
+    const order: { id: number, pizza: { name: string, price: number }, status: string } | undefined = orderQueue.find(order => order.id === orderId)
+    if (!order) {
+        console.error("Order not found.")
+        return null;
+    }
     order.status = "completed"
     return order
 }
 
-addNewPizza({ name: "Chicken Bacon Ranch", cost: 12 })
-addNewPizza({ name: "BBQ Chicken", cost: 12 })
-addNewPizza({ name: "Spicy Sausage", cost: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
-completeOrder("1")
+completeOrder(1)
 
 console.log("Menu:", menu)
 console.log("Cash in register:", cashInRegister)
