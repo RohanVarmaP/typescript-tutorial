@@ -49,8 +49,14 @@ export function getPizzaDetail(detail: string | number) {
         console.error("Detail must be a string or a number.")
         return null;
     }
-    const pizza: menuType | undefined = (typeof detail === 'string') ? menu.find(pizzaObj => pizzaObj.name.toLowerCase() === detail.toLowerCase()) :
-        menu.find(pizzaObj => pizzaObj.id === detail);
+    let pizza: menuType | undefined;
+    if (typeof detail === 'string') {
+        pizza = menu.find(pizzaObj => pizzaObj.name.toLowerCase() === detail.toLowerCase());
+    } else if (typeof detail === 'number') {
+        pizza = menu.find(pizzaObj => pizzaObj.id === detail);
+    } else {
+        throw new TypeError('The identifier should be either number or string');
+    }
     if (!pizza) {
         console.error("Pizza not found.")
         return null;
