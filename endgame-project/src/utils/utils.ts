@@ -1,6 +1,6 @@
 
 export function getFarewellText(language: string): string {
-    const options = [
+    const options: string[] = [
         `Farewell, ${language}`,
         `Adios, ${language}`,
         `R.I.P., ${language}`,
