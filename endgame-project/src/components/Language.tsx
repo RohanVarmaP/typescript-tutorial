@@ -1,5 +1,5 @@
 import React from 'react'
-import { languages, languageType } from '../data/languages'
+import { languages, languageType } from '../data/Languages'
 import clsx from 'clsx'
 
 const Language = (props: { wrongGuessCount: number }) => {

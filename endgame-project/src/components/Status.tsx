@@ -1,9 +1,15 @@
 import React from 'react'
-import { getFarewellText } from '../utils/FarewellText'
-import { languages } from '../data/languages'
+import { getFarewellText } from '../utils/utils'
+import { languages, languageType } from '../data/Languages'
 
-const Status = (props) => {
-    const [incorrectGuess, setIncorrectGuess] = React.useState('')
+type statusPropsType = {
+    isgameLost: boolean,
+    isgameWon: boolean,
+    wrongGuessCount: number
+}
+
+const Status = (props: statusPropsType) => {
+    const [incorrectGuess, setIncorrectGuess] = React.useState<string>('')
 
     React.useEffect(() => {
         if (props.wrongGuessCount > 0 && props.wrongGuessCount < 10) {
