@@ -1,4 +1,9 @@
-export const languages: { name: string, backgroundColor: string, color: string }[] = [
+type languageType = {
+    name: string,
+    backgroundColor: string,
+    color: string
+}[]
+export const languages: languageType = [
     {
         name: "HTML",
         backgroundColor: "#E2680F",
