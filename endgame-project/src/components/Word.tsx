@@ -1,6 +1,12 @@
 import React from 'react'
 
-const Word = (props) => {
+type wordPropsType = {
+    currentWord: string,
+    letterGuessed: string[],
+    isGameOver: boolean
+}
+
+const Word = (props: wordPropsType) => {
     const letterElements = props.currentWord.split('').map((letter, index) => {
         const isGuessed = props.letterGuessed.includes(letter)
         const shouldShow = isGuessed || props.isGameOver
