@@ -1,10 +1,10 @@
 import React from 'react'
-import { languages } from '../data/languages'
+import { languages, languageType } from '../data/languages'
 import clsx from 'clsx'
 
-const Language = (props) => {
-    function getLanguages(languages) {
-        const languageElement = languages.map((val, index) => {
+const Language = (props: { wrongGuessCount: number }) => {
+    function getLanguages(languages: languageType[]) {
+        const languageElement = languages.map((val: languageType, index: number) => {
             const styles = {
                 backgroundColor: val.backgroundColor,
                 color: val.color
