@@ -25,8 +25,13 @@ function App() {
   const isGameOver: boolean = isgameLost || isgameWon
   console.log('isgameover', isGameOver)
 
-  function handleLetterClick(letter) {
-    setLetterGuessed(prev => (letter && !prev.includes(letter)) ? [...prev, letter] : prev);
+  function handleLetterClick(letter: string): void {
+    setLetterGuessed((prev: string[]): string[] => (letter && !prev.includes(letter)) ? [...prev, letter] : prev);
+  }
+
+  function newGame(): void {
+    setCurrentWord(getRandomWord());
+    setLetterGuessed([]);
   }
 
   return (
@@ -36,7 +41,7 @@ function App() {
       <Language wrongGuessCount={wrongGuessCount} />
       <Word currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} />
       <Keyboard onLetterClick={handleLetterClick} letterGuessed={letterGuessed} currentWord={currentWord} isGameOver={isGameOver} />
-      {isGameOver ? <button onClick={() => window.location.reload()}>New Game</button> : null}
+      {isGameOver ? <button onClick={newGame}>New Game</button> : null}
     </>
   );
 }
