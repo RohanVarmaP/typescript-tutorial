@@ -1,3 +1,13 @@
+import { get } from "http";
+import { words } from "../data/Words";
+
+function getRandomNumber(arr: string[]): number {
+    return Math.floor(Math.random() * arr.length)
+}
+
+export function getRandomWord(): string {
+    return words[getRandomNumber(words)]
+}
 
 export function getFarewellText(language: string): string {
     const options: string[] = [
@@ -14,7 +24,5 @@ export function getFarewellText(language: string): string {
         `${language}, your watch has ended`,
         `${language} has left the building`
     ];
-
-    const randomIndex = Math.floor(Math.random() * options.length);
-    return options[randomIndex];
+    return options[getRandomNumber(options)];
 }
