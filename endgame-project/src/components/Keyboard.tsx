@@ -8,7 +8,7 @@ type keyboardPropsType = {
     isGameOver: boolean
 }
 
-const Keyboard = (props: keyboardPropsType) => {
+const Keyboard = (props: keyboardPropsType): React.JSX.Element => {
     const alphabetElement = 'abcdefghijklmnopqrstuvwxyz'.split('').map((letter, index) => {
         const isGuessed = props.letterGuessed.includes(letter)
         const isCorrect = isGuessed && props.currentWord.includes(letter)
@@ -19,12 +19,13 @@ const Keyboard = (props: keyboardPropsType) => {
         })
         return (
             <button
+                type='button'
                 key={index}
                 onClick={() => props.onLetterClick(letter)}
                 className={className}
                 disabled={props.isGameOver}
                 aria-label={`Letter: ${letter}`}
-                aria-disabled={props.isGameOver ? 'true' : 'false'}
+                aria-disabled={props.isGameOver ? "true" : "false"}
             >
                 {letter.toUpperCase()}
             </button>

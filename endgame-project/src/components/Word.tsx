@@ -6,7 +6,7 @@ type wordPropsType = {
     isGameOver: boolean
 }
 
-const Word = (props: wordPropsType) => {
+const Word = (props: wordPropsType): React.JSX.Element => {
     const letterElements = props.currentWord.split('').map((letter, index) => {
         const isGuessed = props.letterGuessed.includes(letter)
         const shouldShow = isGuessed || props.isGameOver

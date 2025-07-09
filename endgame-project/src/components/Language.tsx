@@ -2,7 +2,7 @@ import React from 'react'
 import { languages, languageType } from '../data/Languages'
 import clsx from 'clsx'
 
-const Language = (props: { wrongGuessCount: number }) => {
+const Language = (props: { wrongGuessCount: number }): React.JSX.Element => {
     function getLanguages(languages: languageType[]) {
         const languageElement = languages.map((val: languageType, index: number) => {
             const styles = {

@@ -8,7 +8,7 @@ type statusPropsType = {
     wrongGuessCount: number
 }
 
-const Status = (props: statusPropsType) => {
+const Status = (props: statusPropsType): React.JSX.Element => {
     const [incorrectGuess, setIncorrectGuess] = React.useState<string>('')
 
     React.useEffect(() => {
@@ -26,7 +26,7 @@ const Status = (props: statusPropsType) => {
         }
     }, [props.wrongGuessCount])
 
-    const getStatus = () => {
+    const getStatus = (): React.JSX.Element | null => {
         if (props.isgameWon) {
             return (
                 <>
