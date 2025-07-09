@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Status from './components/Status';
+import Language from './components/Language';
+import Word from './components/Word';
+import Keyboard from './components/Keyboard';
+import { words } from './data/Words';
 
 function App() {
+
+  const [currentWord, setCurrentWord] = React.useState(Math.floor(Math.random() * words.length) >= 0 ? words[Math.floor(Math.random() * words.length)] : 'javascript');
+  const [letterGuessed, setLetterGuessed] = React.useState([])
+  // console.log('currentWord', currentWord);
+  // console.log('letterGuessed', letterGuessed);
+
+  const wrongGuessCount = letterGuessed.filter((value) => !currentWord.includes(value)).length
+  // console.log(wrongGuessCount)
+
+  const isgameWon = currentWord.split('').every((letter) => letterGuessed.includes(letter))
+  // console.log('isgameWon', isgameWon)
+  const isgameLost = wrongGuessCount >= 9
+  // console.log('isgameLost', isgameLost)
+  const isGameOver = isgameLost || isgameWon
+  console.log('isgameover', isGameOver)
+
+  function handleLetterClick(letter) {
+    setLetterGuessed(prev => (letter && !prev.includes(letter)) ? [...prev, letter] : prev);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Status isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} />
+      <Language wrongGuessCount={wrongGuessCount} />
+      <Word currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} />
+      <Keyboard onLetterClick={handleLetterClick} letterGuessed={letterGuessed} currentWord={currentWord} isGameOver={isGameOver} />
+      {isGameOver ? <button onClick={() => window.location.reload()}>New Game</button> : null}
+    </>
   );
 }
 
