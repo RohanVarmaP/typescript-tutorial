@@ -4,12 +4,12 @@ import clsx from 'clsx'
 
 const Language = (props: { wrongGuessCount: number }): React.JSX.Element => {
     function getLanguages(languages: languageType[]) {
-        const languageElement = languages.map((val: languageType, index: number) => {
-            const styles = {
+        const languageElement: React.JSX.Element[] = languages.map((val: languageType, index: number): React.JSX.Element => {
+            const styles: Omit<languageType, 'name'> = {
                 backgroundColor: val.backgroundColor,
                 color: val.color
             }
-            const className = clsx({
+            const className: string = clsx({
                 lost: props.wrongGuessCount > index
             })
             return <span
