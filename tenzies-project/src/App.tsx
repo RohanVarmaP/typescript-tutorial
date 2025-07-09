@@ -1,28 +1,35 @@
-import { useState, useRef, useEffect } from 'react';
-import './App.css';
+import { useState, useRef, useEffect, JSX } from 'react';
 import Die from './components/Die';
 import { nanoid } from 'nanoid';
 
+type diceType = {
+  value: number,
+  isHeld: boolean,
+  id: string
+}
+
 function App() {
 
-  const [dice, setDice] = useState(getRandom())
+  const [dice, setDice] = useState<diceType[]>(getRandom())
 
-  const buttonRef = useRef(null)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
   console.log(buttonRef)
 
-  const gameWon = dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0].value)
+  const gameWon: boolean = dice.every((die: diceType): boolean => die.isHeld) && dice.every((die: diceType): boolean => die.value === dice[0].value)
 
   useEffect(() => {
     if (gameWon) {
-      buttonRef.current.focus()
-      buttonRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      if (buttonRef.current) {
+        buttonRef.current.focus()
+        buttonRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
     }
   }, [gameWon])
 
-  function getRandom() {
-    const randomList = [];
+  function getRandom(): diceType[] {
+    const randomList: diceType[] = [];
     for (let i = 0; i < 10; i++) {
-      const randomValue = Math.floor(Math.random() * 6) + 1
+      const randomValue: number = Math.floor(Math.random() * 6) + 1
       randomList.push({
         value: randomValue,
         isHeld: false,
@@ -32,12 +39,12 @@ function App() {
     return randomList
   }
 
-  const diceElement = dice.map((val) => <Die
+  const diceElement: JSX.Element[] = dice.map((val: diceType): JSX.Element => <Die
     key={val.id}
     {...val}
     hold={() => hold(val.id)} />)
 
-  function rollDice() {
+  function rollDice(): void {
     if (gameWon) {
       setDice(getRandom())
     } else {
@@ -47,7 +54,7 @@ function App() {
     }
   }
 
-  function hold(key) {
+  function hold(key: string): void {
     setDice(old => {
       return old.map(val => {
         return val.id === key ? { ...val, isHeld: !val.isHeld } : val

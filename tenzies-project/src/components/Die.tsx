@@ -1,6 +1,13 @@
 import React from 'react'
 
-const Die = (props) => {
+type diePropsType = {
+    value: number,
+    isHeld: boolean,
+    id: string,
+    hold: () => void
+}
+
+const Die = (props: diePropsType) => {
     const styles = {
         backgroundColor: props.isHeld ? '#59E391' : 'white'
     }
