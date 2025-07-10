@@ -10,8 +10,20 @@ import { productsType } from './data/productsData';
 
 
 function App() {
-  const [cart, setCart] = React.useState<productsType[]>([])
-  console.log(cart)
+  function getCartFromLocal() {
+    const localCart = localStorage.getItem('cart')
+    if (localCart) {
+      return JSON.parse(localCart)
+    }
+    else {
+      return []
+    }
+  }
+  const [cart, setCart] = React.useState<productsType[]>(getCartFromLocal)
+  React.useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart])
+
   return (
     <Router>
       <Routes>

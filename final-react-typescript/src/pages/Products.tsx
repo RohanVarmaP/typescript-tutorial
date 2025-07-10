@@ -1,12 +1,11 @@
 import React from 'react'
 import ProductCart from '../components/ProductCart'
-import { useSearchParams, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { productsType, products } from '../data/productsData'
 
 const Products = (props: { cartProducts: productsType[], setCart: React.Dispatch<React.SetStateAction<productsType[]>> }) => {
     const location = useLocation();
     const category: string = new URLSearchParams(location.search).get('category') || 'All';
-    console.log(category)
     const filteredProducts = category === 'All' ? products : products.filter(product => product.category === category);
     return (
         <>
