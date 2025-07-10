@@ -13,31 +13,31 @@ const Home = () => {
             <>
                 <div>
                     <Link to='/products?category=Electronics'>
-                        <img aria-label='view products' src={ElectronicsImg} alt="Electronics" />
+                        <img className='category-img' aria-label='view products' src={ElectronicsImg} alt="Electronics" />
                     </Link>
                     <span>Electronics</span>
                 </div>
                 <div>
                     <Link to={`/products?category=${encodeURIComponent("Home & Kitchen")}`}>
-                        <img aria-label='view products' src={HomeKitchenImg} alt="Home & Kitchen" />
+                        <img className='category-img' aria-label='view products' src={HomeKitchenImg} alt="Home & Kitchen" />
                     </Link>
                     <span>Home & Kitchen</span>
                 </div>
                 <div>
                     <Link to='/products?category=Footwear'>
-                        <img aria-label='view products' src={FootwearImg} alt="Footwear" />
+                        <img className='category-img' aria-label='view products' src={FootwearImg} alt="Footwear" />
                     </Link>
                     <span>Footwear</span>
                 </div>
                 <div>
                     <Link to='/products?category=Clothing'>
-                        <img aria-label='view products' src={ClothingImg} alt="Clothing" />
+                        <img className='category-img' aria-label='view products' src={ClothingImg} alt="Clothing" />
                     </Link>
                     <span>Clothing</span>
                 </div>
                 <div>
                     <Link to='/products?category=Accessories'>
-                        <img aria-label='view products' src={AccessoriesImg} alt="Accessories" />
+                        <img className='category-img' aria-label='view products' src={AccessoriesImg} alt="Accessories" />
                     </Link>
                     <span>Accessories</span>
                 </div>
