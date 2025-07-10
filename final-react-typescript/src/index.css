@@ -9,10 +9,13 @@ body,
   margin: 0;
   height: 100%;
   width: 100%;
-  background-color: rgb(37, 4, 137);
+  font-family: Inter;
+}
+
+/* Wrapper to handle full-height layout */
+#root {
   display: flex;
   flex-direction: column;
-  font-family: Inter;
 }
 
 header {
@@ -21,7 +24,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(46, 77, 161);
+  background-color: #1E2A47;
   padding: 0px 10px;
   color: whitesmoke;
   position: fixed;
@@ -39,10 +42,11 @@ header>div {
 }
 
 .nav-button {
-  background-color: transparent;
+  background-color: #4C9EFF;
   color: whitesmoke;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
   font-family: Inter;
 }
 
@@ -54,9 +58,46 @@ header>div {
 
 main {
   margin-top: 60px;
-  /* Same as header height */
+  /* space for fixed header */
   flex-grow: 1;
+  overflow-y: auto;
   padding: 20px;
   background-color: white;
-  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  mix-blend-mode: multiply;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-gap: 15px;
+}
+
+.product-list>article {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: #f0f4ff;
+}
+
+.product-list>article>button {
+  border-radius: 5px;
+  font-family: Inter;
+  border: none;
+  background-color: #f0f4ff;
+}
+
+.product-list>article>button:hover {
+  border: 1px solid #4C9EFF;
+  background-color: #4C9EFF;
 }
