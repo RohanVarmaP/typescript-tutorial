@@ -1,5 +1,5 @@
 import React from 'react'
-import { productsType } from '../pages/Products'
+import { productsType } from '../data/productsData'
 
 function isPresent(cart: productsType[], item: productsType): boolean {
     return cart.some((cartitem) => cartitem.id === item.id)

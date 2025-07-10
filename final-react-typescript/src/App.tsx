@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
-import { productsType } from './pages/Products';
+import { productsType } from './data/productsData';
 
 
 function App() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { productsType } from './Products'
+import { productsType } from '../data/productsData'
 import ProductCart from '../components/ProductCart'
 
 const Cart = (props: { cartProducts: productsType[], setCart: React.Dispatch<React.SetStateAction<productsType[]>> }) => {
