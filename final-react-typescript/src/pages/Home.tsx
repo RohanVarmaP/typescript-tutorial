@@ -51,7 +51,7 @@ const Home = () => {
                 <img aria-label='view products' src={produtsImg} alt="Placeholder" />
             </Link>
             <h2>Filter based on Category</h2>
-            <section>
+            <section className='category-list'>
                 {categorySection()}
             </section>
         </>

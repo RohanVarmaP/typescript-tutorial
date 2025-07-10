@@ -124,6 +124,26 @@ img {
   mix-blend-mode: multiply;
 }
 
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  /* 2 equal columns */
+  grid-auto-rows: 1fr;
+  /* auto rows with same height */
+  gap: 16px;
+}
+
+.category-list>div {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
 .product-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
