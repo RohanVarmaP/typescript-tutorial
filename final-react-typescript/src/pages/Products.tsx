@@ -1,13 +1,16 @@
 import React from 'react'
+import ProductCart from '../components/ProductCart'
+
+export type productsType = {
+    id: number,
+    name: string,
+    description: string,
+    priceCents: number,
+    category: string
+}
 
 const Products = () => {
-    type productsType = {
-        id: number,
-        name: string,
-        description: string,
-        priceCents: number,
-        category: string
-    }
+
     const products: productsType[] = [
         {
             id: 1,
@@ -66,20 +69,10 @@ const Products = () => {
             category: "Electronics"
         }
     ];
-
-    const productElements: React.JSX.Element[] = products.map((item: productsType): React.JSX.Element => (
-        <article key={item.id}>
-            <h3>{item.name}</h3>
-            <p>{item.description}</p>
-            <button>${(item.priceCents / 100).toFixed(2)}</button>
-            <button>Add to Cart</button>
-        </article>
-    ))
-
     return (
         <>
             <h1>Products List</h1>
-            <section className='product-list'>{productElements}</section>
+            <section className='product-list'><ProductCart products={products} /></section>
         </>
     )
 }
