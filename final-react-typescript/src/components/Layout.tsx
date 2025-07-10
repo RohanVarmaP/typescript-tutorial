@@ -2,11 +2,11 @@ import React from 'react'
 import Navbar from './Navbar'
 import { Outlet } from 'react-router-dom'
 
-const Layout = () => {
+const Layout = (props: { cartLength: number }) => {
     return (
         <>
             <header>
-                <Navbar />
+                <Navbar cartLength={props.cartLength} />
             </header>
             <main>
                 <Outlet />

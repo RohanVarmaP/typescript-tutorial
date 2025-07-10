@@ -9,7 +9,7 @@ export type productsType = {
     category: string
 }
 
-const Products = () => {
+const Products = (props: { cartProducts: productsType[], setCart: React.Dispatch<React.SetStateAction<productsType[]>> }) => {
 
     const products: productsType[] = [
         {
@@ -72,7 +72,7 @@ const Products = () => {
     return (
         <>
             <h1>Products List</h1>
-            <section className='product-list'><ProductCart products={products} /></section>
+            <section className='product-list'><ProductCart products={products} {...props} from={'/products'} /></section>
         </>
     )
 }
