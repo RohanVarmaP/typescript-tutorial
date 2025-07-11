@@ -7,17 +7,40 @@ type cluePropsType = {
     currentWord: string,
 }
 const Clues = (props: cluePropsType) => {
-    if (props.difficulty === 'easy') {
-        const clues: doubleClueType = double.filter(value => value.word == props.currentWord)[0]
-        console.log(clues)
-    } else {
-        const clues: singleClueType = single.filter(value => value.word == props.currentWord)[0]
-        console.log(clues)
+    function getClues() {
+        if (props.difficulty === 'easy') {
+            const clues: doubleClueType = double.filter(value => value.word == props.currentWord)[0]
+            console.log(clues)
+            return (
+                <>
+                    <div>
+                        <p>Clue-1</p>
+                        <span>{clues.clues[0]}</span>
+                    </div>
+                    <div>
+                        <p>Clue-1</p>
+                        <span>{clues.clues[1]}</span>
+                    </div>
+                </>
+            )
+        } else {
+            const clues: singleClueType = single.filter(value => value.word == props.currentWord)[0]
+            console.log(clues)
+            return (
+                <>
+                    <div>
+                        <p>Clue-1:</p>
+                        <span>{clues.clues}</span>
+                    </div>
+                </>
+            )
+        }
     }
+
     return (
-        <>
-            d
-        </>
+        <section className='clue-section'>
+            {getClues()}
+        </section>
     )
 }
 

@@ -1,9 +1,9 @@
-export type singlecluesType = {
+export type singleClueType = {
     word: string;
     clues: string;
 }
 
-export const words: singlecluesType[] = [
+export const words: singleClueType[] = [
     { word: "about", clues: "regarding something" },
     { word: "account", clues: "financial record" },
     { word: "across", clues: "from one side to the other" },
