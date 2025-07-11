@@ -1,4 +1,9 @@
-export const words: { word: string; clues: string[] }[] = [
+export type doubleClueType = {
+    word: string;
+    clues: string[];
+}
+
+export const words: doubleClueType[] = [
     { word: "about", clues: ["regarding something", "close to a quantity or time"] },
     { word: "account", clues: ["financial record", "user login details"] },
     { word: "across", clues: ["from one side to the other", "in opposition or contrast"] },

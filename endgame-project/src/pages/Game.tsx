@@ -33,7 +33,7 @@ const Game = (props: GamePropsType) => {
             <Status isgameLost={props.isgameLost} isgameWon={props.isgameWon} wrongGuessCount={props.wrongGuessCount} />
             <Language wrongGuessCount={props.wrongGuessCount} />
             <Word currentWord={props.currentWord} letterGuessed={props.letterGuessed} isGameOver={props.isGameOver} />
-            {difficulty !== 'hard' ? <Clues /> : null}
+            {difficulty !== 'hard' ? <Clues difficulty={difficulty} currentWord={props.currentWord} /> : null}
             <Keyboard onLetterClick={props.onLetterClick} letterGuessed={props.letterGuessed} currentWord={props.currentWord} isGameOver={props.isGameOver} />
             {props.isGameOver ? <button onClick={props.newGame}>New Game</button> : null}
         </>
