@@ -25,6 +25,7 @@ type GamePropsType = {
 
 
 const Game = (props: GamePropsType) => {
+    const [startOrEnd, setStartOrEnd] = React.useState<'started' | 'ended'>('started')
     const navigate = useNavigate()
     React.useEffect(() => {
         if (props.isgameWon) {
@@ -33,8 +34,6 @@ const Game = (props: GamePropsType) => {
             }, 2000)
         }
     }, [props.isgameWon]);
-
-
     const location = useLocation()
     const difficultyVal = new URLSearchParams(location.search)
     const [difficulty, setDifficulty] = React.useState<string>(String(difficultyVal.get('difficulty')))
@@ -44,13 +43,15 @@ const Game = (props: GamePropsType) => {
 
     React.useEffect(() => {
         alert('a new game will start')
+        setStartOrEnd('started')
         setDifficulty(String(difficultyVal.get('difficulty')))
         props.setIsgameWon(false)
         props.newGame()
-    }, [location])
+    }, [startOrEnd])
 
     React.useEffect(() => {
-        if (props.isgameWon) {
+        if (props.isgameWon && startOrEnd === 'started') {
+            setStartOrEnd('ended')
             const endTime = Date.now();
             const timeTakenInSeconds = Math.floor((endTime - startTime) / 1000);
             const timeObj: scoretype = {

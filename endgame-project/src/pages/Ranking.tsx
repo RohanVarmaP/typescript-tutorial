@@ -2,7 +2,7 @@ import React from 'react';
 import { scoretype } from '../App';
 
 const Ranking = ({ rankingList }: { rankingList: scoretype[] }) => {
-    const difficulties = ['easy', 'medium', 'hard'];
+    const difficulties = ['easy', 'standard', 'hard'];
 
     const getSortedScores = (difficulty: string) => {
         return rankingList
