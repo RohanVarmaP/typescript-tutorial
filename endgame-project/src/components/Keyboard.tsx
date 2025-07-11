@@ -9,7 +9,7 @@ type keyboardPropsType = {
 }
 
 const Keyboard = (props: keyboardPropsType): React.JSX.Element => {
-    const alphabetElement = 'abcdefghijklmnopqrstuvwxyz'.split('').map((letter, index) => {
+    const alphabetElement = 'qwertyuiopasdfghjklzxcvbnm'.split('').map((letter, index) => {
         const isGuessed = props.letterGuessed.includes(letter)
         const isCorrect = isGuessed && props.currentWord.includes(letter)
         const isWrong = isGuessed && !props.currentWord.includes(letter)

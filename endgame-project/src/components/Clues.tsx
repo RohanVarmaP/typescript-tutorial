@@ -10,7 +10,7 @@ const Clues = (props: cluePropsType) => {
     function getClues() {
         if (props.difficulty === 'easy') {
             const clues: doubleClueType = double.filter(value => value.word == props.currentWord)[0]
-            console.log(clues)
+            // console.log(clues)
             return (
                 <>
                     <div>
