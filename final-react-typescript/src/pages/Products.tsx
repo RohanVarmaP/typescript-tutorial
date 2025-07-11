@@ -11,7 +11,9 @@ const Products = (props: { cartProducts: productsType[], setCart: React.Dispatch
         <>
             <h1>Products List</h1>
 
-            <section className='product-list'><ProductCart products={filteredProducts} {...props} from={'/products'} /></section>
+            <section className='product-list'>
+                <ProductCart products={filteredProducts} {...props} from={'/products'} />
+            </section>
         </>
     )
 }
