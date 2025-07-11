@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './components/Header';
-import Status from './components/Status';
-import Language from './components/Language';
-import Word from './components/Word';
-import Keyboard from './components/Keyboard';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { getRandomWord } from './utils/utils';
+import Game from './pages/Game';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Ranking from './pages/Ranking';
 
 function App() {
 
@@ -34,14 +34,23 @@ function App() {
   }
 
   return (
-    <>
-      <Header />
-      <Status isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} />
-      <Language wrongGuessCount={wrongGuessCount} />
-      <Word currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} />
-      <Keyboard onLetterClick={handleLetterClick} letterGuessed={letterGuessed} currentWord={currentWord} isGameOver={isGameOver} />
-      {isGameOver ? <button onClick={newGame}>New Game</button> : null}
-    </>
+    <Router>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/game' element={<Game isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} onLetterClick={handleLetterClick} newGame={newGame} />} />
+          <Route path='/ranking' element={<Ranking />} />
+        </Route>
+      </Routes>
+    </Router >
+    // <>
+    //   <Header />
+    //   <Status isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} />
+    //   <Language wrongGuessCount={wrongGuessCount} />
+    //   <Word currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} />
+    //   <Keyboard onLetterClick={handleLetterClick} letterGuessed={letterGuessed} currentWord={currentWord} isGameOver={isGameOver} />
+    //   {isGameOver ? <button onClick={newGame}>New Game</button> : null}
+    // </>
   );
 }
 
