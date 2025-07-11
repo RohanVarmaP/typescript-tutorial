@@ -436,7 +436,6 @@ export const words: string[] = [
     "thread",
     "throat",
     "through",
-    "through",
     "thumb",
     "thunder",
     "ticket",
