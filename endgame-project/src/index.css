@@ -20,6 +20,18 @@ body,
   align-items: center;
 }
 
+main {
+  margin-top: 50px;
+  flex: 1;
+  overflow-y: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
 header {
   text-align: center;
   width: 50%;
@@ -147,4 +159,73 @@ button {
 
 .keyboard-section>.wrong {
   background-color: #EC5D49;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1d3557;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+}
+
+.nav-buttons {
+  margin-left: 10px;
+  background-color: #457b9d;
+  height: 30px;
+  width: 100px;
+  color: #ffffff;
+  padding: 0px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-buttons:hover {
+  background-color: #a8dadc;
+  transform: translateY(-1px);
+}
+
+.home-section {
+  border: 1px solid #11B5E5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 25px;
+}
+
+.home-component {
+  padding: 0px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.home-buttons {
+  margin: 15px 0px;
+  background-color: #457b9d;
+  height: 30px;
+  width: 200px;
+  color: #ffffff;
+  padding: 0px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.home-buttons:hover {
+  background-color: #a8dadc;
+  transform: translateY(-1px);
 }
