@@ -1,4 +1,3 @@
-import { get } from "http";
 import { words } from "../data/Words";
 
 function getRandomNumber(arr: string[]): number {
