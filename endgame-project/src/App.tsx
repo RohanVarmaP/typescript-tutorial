@@ -9,15 +9,21 @@ import Ranking from './pages/Ranking';
 function App() {
 
   // State Values
-  const [currentWord, setCurrentWord] = React.useState<string>((): string => getRandomWord());
+  const [currentWord, setCurrentWord] = React.useState<string>((): string => getRandomWord())
+
   const [letterGuessed, setLetterGuessed] = React.useState<string[]>([])
+
+  const [isgameWon, setIsgameWon] = React.useState<boolean>(false)
+  React.useEffect(() => {
+    setIsgameWon(currentWord.split('').every((letter: string): boolean => letterGuessed.includes(letter)))
+  }, [letterGuessed])
   // console.log('currentWord', currentWord);
   // console.log('letterGuessed', letterGuessed);
 
   // Derived Values
   const wrongGuessCount: number = letterGuessed.filter((value: string): boolean => !currentWord.includes(value)).length
   // console.log(wrongGuessCount)
-  const isgameWon: boolean = currentWord.split('').every((letter: string): boolean => letterGuessed.includes(letter))
+  // const isgameWon: boolean = currentWord.split('').every((letter: string): boolean => letterGuessed.includes(letter))
   // console.log('isgameWon', isgameWon)
   const isgameLost: boolean = wrongGuessCount >= 9
   // console.log('isgameLost', isgameLost)
@@ -38,7 +44,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path='/' element={<Home />} />
-          <Route path='/game' element={<Game isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} onLetterClick={handleLetterClick} newGame={newGame} />} />
+          <Route path='/game' element={<Game isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} onLetterClick={handleLetterClick} newGame={newGame} setIsgameWon={setIsgameWon} />} />
           <Route path='/ranking' element={<Ranking />} />
         </Route>
       </Routes>

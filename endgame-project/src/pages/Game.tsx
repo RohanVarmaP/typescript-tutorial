@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Status from '../components/Status'
 import Language from '../components/Language'
@@ -15,9 +15,18 @@ type GamePropsType = {
     letterGuessed: string[],
     isGameOver: boolean,
     onLetterClick: (letter: string) => void,
-    newGame: () => void
+    newGame: () => void,
+    setIsgameWon: React.Dispatch<React.SetStateAction<boolean>>
 }
 const Game = (props: GamePropsType) => {
+    const navigate = useNavigate()
+    React.useEffect(() => {
+        if (props.isgameWon) {
+            setTimeout(() => {
+                navigate('/ranking');
+            }, 2000)
+        }
+    }, [props.isgameWon]);
     const location = useLocation()
     const difficultyVal = new URLSearchParams(location.search)
     const [difficulty, setDifficulty] = React.useState<string>(String(difficultyVal.get('difficulty')))
@@ -25,6 +34,7 @@ const Game = (props: GamePropsType) => {
     React.useEffect(() => {
         alert('a new game will start')
         setDifficulty(String(difficultyVal.get('difficulty')))
+        props.setIsgameWon(false)
         props.newGame()
     }, [location])
     return (

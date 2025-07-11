@@ -36,15 +36,20 @@ header {
   text-align: center;
   width: 50%;
   height: 100px;
+  overflow: hidden;
 }
 
 header>h1 {
+  padding: 0px;
+  margin: 10px 0px 0px 0px;
   font-size: 1.75rem;
   color: #F9F4DA;
   font-weight: 500;
 }
 
 header>p {
+  margin: 0px;
+  padding: 0px;
   font-weight: 500;
   font-size: 18px;
   color: #8E8E8E;
@@ -228,4 +233,20 @@ nav {
 .home-buttons:hover {
   background-color: #a8dadc;
   transform: translateY(-1px);
+}
+
+.clue-section {
+  display: flex;
+  gap: 15px;
+}
+
+.clue-section>div {
+  margin-top: 10px;
+  padding: 0px 15px;
+  border-radius: 10px;
+  background-color: #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
