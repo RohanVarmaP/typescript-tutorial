@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import Header from '../components/Header'
 import Status from '../components/Status'
 import Language from '../components/Language'
@@ -16,12 +17,17 @@ type GamePropsType = {
     newGame: () => void
 }
 const Game = (props: GamePropsType) => {
+    const location = useLocation()
+    const difficultyVal = new URLSearchParams(location.search)
+    const [difficulty, setDifficulty] = React.useState<string>(String(difficultyVal.get('difficulty')))
+    console.log("difficulty ", difficulty)
     return (
         <>
             <Header />
             <Status isgameLost={props.isgameLost} isgameWon={props.isgameWon} wrongGuessCount={props.wrongGuessCount} />
             <Language wrongGuessCount={props.wrongGuessCount} />
             <Word currentWord={props.currentWord} letterGuessed={props.letterGuessed} isGameOver={props.isGameOver} />
+
             <Keyboard onLetterClick={props.onLetterClick} letterGuessed={props.letterGuessed} currentWord={props.currentWord} isGameOver={props.isGameOver} />
             {props.isGameOver ? <button onClick={props.newGame}>New Game</button> : null}
         </>

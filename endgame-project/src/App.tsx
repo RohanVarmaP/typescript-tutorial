@@ -43,14 +43,6 @@ function App() {
         </Route>
       </Routes>
     </Router >
-    // <>
-    //   <Header />
-    //   <Status isgameLost={isgameLost} isgameWon={isgameWon} wrongGuessCount={wrongGuessCount} />
-    //   <Language wrongGuessCount={wrongGuessCount} />
-    //   <Word currentWord={currentWord} letterGuessed={letterGuessed} isGameOver={isGameOver} />
-    //   <Keyboard onLetterClick={handleLetterClick} letterGuessed={letterGuessed} currentWord={currentWord} isGameOver={isGameOver} />
-    //   {isGameOver ? <button onClick={newGame}>New Game</button> : null}
-    // </>
   );
 }
 
