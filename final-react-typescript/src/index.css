@@ -359,3 +359,19 @@ ul li {
 .cartlist-list>article>button:hover {
   background-color: #d3d3d3;
 }
+
+.payment-section {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.payment-params {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-params>p {
+  padding: 0px;
+}

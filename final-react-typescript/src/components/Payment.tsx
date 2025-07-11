@@ -12,7 +12,7 @@ const Payment = (props: { products: productsType[] }) => {
             tax = costWithoutTax / 10
             total = costWithoutTax + costWithoutTax / 10
             return (
-                <div>
+                <div className='payment-params'>
                     <p>{item.name}:</p>
                     <span>${centsToDollars(item.priceCents)}</span>
                 </div>
@@ -23,15 +23,15 @@ const Payment = (props: { products: productsType[] }) => {
         <>
             <h3>Items({props.products.length})</h3>
             {getItemPriceList()}
-            <div>
+            <div className='payment-params'>
                 <p>Total cost without Tax:</p>
                 <span>${centsToDollars(costWithoutTax)}</span>
             </div>
-            <div>
+            <div className='payment-params'>
                 <p>Tax:</p>
                 <span>${centsToDollars(tax)}</span>
             </div>
-            <div>
+            <div className='payment-params'>
                 <p>Total:</p>
                 <span>${centsToDollars(total)}</span>
             </div>
