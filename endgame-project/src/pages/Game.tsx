@@ -6,6 +6,9 @@ import Language from '../components/Language'
 import Word from '../components/Word'
 import Keyboard from '../components/Keyboard'
 import Clues from '../components/Clues'
+import DateTimeComponent from '../utils/utils'
+import { scoretype } from '../App'
+
 
 type GamePropsType = {
     isgameLost: boolean,
@@ -16,8 +19,11 @@ type GamePropsType = {
     isGameOver: boolean,
     onLetterClick: (letter: string) => void,
     newGame: () => void,
-    setIsgameWon: React.Dispatch<React.SetStateAction<boolean>>
+    setIsgameWon: React.Dispatch<React.SetStateAction<boolean>>,
+    setRankingList: React.Dispatch<React.SetStateAction<scoretype[]>>
 }
+
+
 const Game = (props: GamePropsType) => {
     const navigate = useNavigate()
     React.useEffect(() => {
@@ -27,16 +33,39 @@ const Game = (props: GamePropsType) => {
             }, 2000)
         }
     }, [props.isgameWon]);
+
+
     const location = useLocation()
     const difficultyVal = new URLSearchParams(location.search)
     const [difficulty, setDifficulty] = React.useState<string>(String(difficultyVal.get('difficulty')))
-    console.log(difficulty)
+    const [startTime, setStartTime] = React.useState<number>(Date.now());
+    // console.log(difficulty)
+
+
     React.useEffect(() => {
         alert('a new game will start')
         setDifficulty(String(difficultyVal.get('difficulty')))
         props.setIsgameWon(false)
         props.newGame()
     }, [location])
+
+    React.useEffect(() => {
+        if (props.isgameWon) {
+            const endTime = Date.now();
+            const timeTakenInSeconds = Math.floor((endTime - startTime) / 1000);
+            const timeObj: scoretype = {
+                ...DateTimeComponent(),
+                difficulty: difficulty,
+                timeTaken: timeTakenInSeconds,
+            };
+            props.setRankingList(prev => [...prev, timeObj])
+            console.log('🏆 Game won!', timeObj);
+
+            setTimeout(() => {
+                navigate('/ranking');
+            }, 2000);
+        }
+    }, [props.isgameWon]);
     return (
         <>
             <Header />

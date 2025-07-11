@@ -1,5 +1,10 @@
 import { words } from "../data/Words";
 
+type timeType = {
+    date: string,
+    time: string,
+}
+
 function getRandomNumber(arr: string[]): number {
     return Math.floor(Math.random() * arr.length)
 }
@@ -25,3 +30,28 @@ export function getFarewellText(language: string): string {
     ];
     return options[getRandomNumber(options)];
 }
+
+
+export const DateTimeComponent = (): timeType => {
+    const currentDate = new Date();
+
+    const formattedDate = currentDate.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+    });
+
+    const formattedTime = currentDate.toLocaleTimeString('en-US', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+    });
+
+    return {
+        date: formattedDate,
+        time: formattedTime
+    }
+};
+
+export default DateTimeComponent;
