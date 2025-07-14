@@ -1,6 +1,7 @@
 import React from 'react'
+import { homeDataType } from '../data/userData'
 
-const SingleAttemptQuiz = () => {
+const SingleAttemptQuiz = (props: { homeData: homeDataType }) => {
     return (
         <div>
             SingleAttemptQuiz

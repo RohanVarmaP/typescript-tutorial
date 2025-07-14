@@ -11,7 +11,7 @@ export type homeDataType = {
     "not_attempted_quizzes": quizType[]
 }
 
-const homeData: homeDataType = {
+export const homeData: homeDataType = {
     "username": "user1",
     "single_attempt_completed_quizzes": [
         {

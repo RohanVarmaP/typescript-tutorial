@@ -1,6 +1,7 @@
 import React from 'react'
+import { homeDataType } from '../data/userData'
 
-const CompletedQuiz = () => {
+const CompletedQuiz = (props: { homeData: homeDataType }) => {
     return (
         <div>
             CompletedQuiz
