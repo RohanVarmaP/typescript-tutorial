@@ -11,6 +11,7 @@ import SingleAttemptQuiz from './pages/SingleAttemptQuiz';
 import Quiz from './pages/Quiz';
 import ReviewQuiz from './pages/ReviewQuiz';
 import Ranking from './pages/Ranking';
+import CompletedQuiz from './pages/CompletedQuiz';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/unattemptdedquiz/' element={<UnattemptedQuiz />} />
           <Route path='/singleattemptedquiz/' element={<SingleAttemptQuiz />} />
+          <Route path='/completedquiz/' element={<CompletedQuiz />} />
           <Route path='/quiz/' element={<Quiz />} />
           <Route path='/review/' element={<ReviewQuiz />} />
           <Route path='/ranking/' element={<Ranking />} />
