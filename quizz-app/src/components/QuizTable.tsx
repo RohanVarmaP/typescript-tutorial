@@ -10,8 +10,12 @@ const QuizTable = (props: QuizPropsType) => {
         <article key={quiz.quiz_id} className='quiz-article'>
             <h3>{quiz.quiz_name}</h3>
             <div>
-                {props.from !== 'completed' ? <Link to={'/quiz/'}><button>Re-attempt Quiz</button></Link> : null}
-                {props.from !== 'published'
+                {props.from !== 'completed'
+                    ? props.from !== 'unattempted'
+                        ? <Link to={'/quiz/'}><button>Re-attempt Quiz</button></Link>
+                        : <Link to={'/quiz/'}><button>Attempt Quiz</button></Link>
+                    : null}
+                {props.from !== 'unattempted'
                     ? <>
                         <Link to={'/review/'}><button>Review Quiz</button></Link><Link to={'/ranking/'}><button>Rank</button></Link>
                     </>
