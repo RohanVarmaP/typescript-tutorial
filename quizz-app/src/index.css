@@ -113,9 +113,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   gap: 2rem;
-  /* Add spacing between grid items */
   justify-content: center;
-  /* Center the grid in the container */
   padding: 2rem;
 }
 
@@ -150,4 +148,51 @@ main {
 .home-section>a>p {
   color: #1F2937;
   font-size: 1.25rem;
+}
+
+.quiz-details {
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.quiz-article {
+  width: 300px;
+  height: 300px;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  /* Top: 80%, Bottom: 20% */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #F9FAFB;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.quiz-article>div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-article>div>a>button {
+  font-family: Inter;
+  height: 35px;
+  padding: 0px 10px;
+  background-color: #2563EB;
+  border: none;
+  border-radius: 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.quiz-article>div>a>button:hover {
+  background-color: #1D4ED8;
 }

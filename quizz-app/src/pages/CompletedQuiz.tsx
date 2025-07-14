@@ -5,7 +5,7 @@ import QuizTable from '../components/QuizTable'
 const CompletedQuiz = (props: { homeData: homeDataType }) => {
     const cqdata = props.homeData.fully_attempted_quizzes
     return (
-        <div>
+        <div className='quiz-details'>
             <QuizTable from='completed' data={cqdata} />
         </div>
     )

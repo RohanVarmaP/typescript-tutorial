@@ -9,9 +9,14 @@ const QuizTable = (props: QuizPropsType) => {
     const generateQuizData = props.data.map((quiz, index) => (
         <article key={quiz.quiz_id} className='quiz-article'>
             <h3>{quiz.quiz_name}</h3>
-            {props.from !== 'completed' ? <Link to={'/quiz/'}><button>Re-attempt Quiz</button></Link> : null}
-            <Link to={'/review/'}><button>Review Quiz</button></Link>
-            <Link to={'/ranking/'}><button>Rank</button></Link>
+            <div>
+                {props.from !== 'completed' ? <Link to={'/quiz/'}><button>Re-attempt Quiz</button></Link> : null}
+                {props.from !== 'published'
+                    ? <>
+                        <Link to={'/review/'}><button>Review Quiz</button></Link><Link to={'/ranking/'}><button>Rank</button></Link>
+                    </>
+                    : null}
+            </div>
         </article>
     ))
     return (
