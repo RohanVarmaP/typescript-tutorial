@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+main {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+body {
+  background-color: #F9FAFB;
+  color: #1F2937;
+}
+
+nav {
+  background-color: #3B82F6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+}
+
+nav>a>button {
+  background-color: #2563EB;
+  margin: 10px;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+
+nav>a>button:hover {
+  background-color: #1D4ED8;
+}
+
+main {
+  margin-top: 60px;
+}
