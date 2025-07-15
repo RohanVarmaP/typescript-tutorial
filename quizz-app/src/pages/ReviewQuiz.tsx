@@ -4,7 +4,7 @@ import { reviewData } from '../data/userData'
 const ReviewQuiz = () => {
     function getReviewData() {
         return reviewData.questions.map((val, index) => (
-            <label className='question-label review-question-label' key={val.question.question_id}>
+            <label className='question-label' key={val.question.question_id}>
                 <p>{index + 1}. {val.question.question}</p>
 
                 <label className={val.question.correct_answer

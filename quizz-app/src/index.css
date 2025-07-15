@@ -315,4 +315,31 @@ main {
   background-color: #1D4ED8;
 }
 
-.review-question-
+.question-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.question-label>label {
+  padding: 10px;
+  width: 100%;
+  background-color: #f9fafb;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.question-label>.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.question-label>.wrong {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
