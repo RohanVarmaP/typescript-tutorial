@@ -5,7 +5,9 @@ import { useAuth } from '../AuthContent';
 
 
 const Ranking = () => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, token } = useAuth()
+    const [data, setData] = useState<rankingDataType | null>(null)
+    const [error, setError] = useState<string>('')
     const navigate = useNavigate()
     React.useEffect(() => {
         if (!isLoggedIn) {
@@ -20,29 +22,6 @@ const Ranking = () => {
     useEffect(() => {
         setRankingData(rData)
     }, [])
-
-    // useEffect(() => {
-    //     if (!quizId) return;
-
-    //     // Only fetch if data isn't already loaded OR if quizId changes
-    //     const fetchRanking = async () => {
-    //         setLoading(true);
-    //         try {
-    //             const response = await fetch(`http://127.0.0.1:8000/api/quiz/${quizId}/marks/`);
-    //             if (!response.ok) {
-    //                 throw new Error('Failed to fetch ranking data');
-    //             }
-    //             const data: rankingDataType = await response.json();
-    //             setRankingData(data);
-    //         } catch (error) {
-    //             console.error('Error fetching ranking:', error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchRanking();
-    // }, [quizId]); // re-run only when quizId changes
 
     return (
         <div className="ranking-container">

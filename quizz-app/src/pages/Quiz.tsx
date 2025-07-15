@@ -8,7 +8,6 @@ const Quiz = () => {
     const [data, setData] = useState<quizDatatype | null>(null);
     const [error, setError] = useState<string>('')
     const { quizId } = useParams()
-    console.log(quizId)
     const navigate = useNavigate()
     React.useEffect(() => {
         if (!isLoggedIn) {
