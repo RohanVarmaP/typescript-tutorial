@@ -170,7 +170,7 @@ const Quiz = () => {
 
                 {getQuizData()}
 
-                <button type='submit' disabled={loading}>{loading ? "Submit" : 'Submitting'}</button>
+                <button type='submit' disabled={loading}>{loading ? "Submitting" : 'Submit'}</button>
             </form>
         </>
     )
