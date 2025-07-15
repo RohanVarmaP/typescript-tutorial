@@ -11,7 +11,6 @@ type answerType = {
     "answers": singleAnswerType[]
 }
 
-
 const Quiz = () => {
     const { isLoggedIn, token } = useAuth();
     const [data, setData] = useState<quizDatatype | null>(null);
@@ -80,7 +79,7 @@ const Quiz = () => {
     function getQuizData() {
         if (!data || typeof data === null) return <p>Loading...</p>;
         return data.questions.map((val, index) => (
-            <label className='question-label' key={val.question.question_id}>
+            <div className='question-label' key={val.question.question_id}>
                 <p>{index + 1}. {val.question.question}</p>
 
                 <label>
@@ -90,11 +89,10 @@ const Quiz = () => {
                         value="A"
                         checked={answer[val.question.question_id] === 'A'}
                         onChange={() => handleAnswerChange(val.question.question_id, 'A')}
-                        required
                     />
                     A. {val.question.option_a}
                 </label>
-                <br />
+                <hr />
 
                 <label>
                     <input
@@ -103,10 +101,11 @@ const Quiz = () => {
                         value="B"
                         checked={answer[val.question.question_id] === 'B'}
                         onChange={() => handleAnswerChange(val.question.question_id, 'B')}
+                        required
                     />
                     B. {val.question.option_b}
                 </label>
-                <br />
+                <hr />
 
                 <label>
                     <input
@@ -118,7 +117,7 @@ const Quiz = () => {
                     />
                     C. {val.question.option_c}
                 </label>
-                <br />
+                <hr />
 
                 <label>
                     <input
@@ -131,7 +130,7 @@ const Quiz = () => {
                     D. {val.question.option_d}
                 </label>
                 <hr />
-            </label>
+            </div>
 
         ))
     }
