@@ -6,8 +6,8 @@ const Login = () => {
     const { isLoggedIn } = useAuth()
     const navigate = useNavigate()
     const [error, setError] = React.useState('')
-    const [username, setUsername] = React.useState('')
-    const [password, setPassword] = React.useState('')
+    const [username, setUsername] = React.useState<string>('')
+    const [password, setPassword] = React.useState<string>('')
     const { setToken } = useAuth()
     React.useEffect(() => {
         if (isLoggedIn) {
@@ -18,10 +18,6 @@ const Login = () => {
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (typeof username !== 'string' || typeof password !== 'string') {
-            alert('invalid username or password')
-            return
-        }
         const res = await fetch('http://127.0.0.1:8000/api/login/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
