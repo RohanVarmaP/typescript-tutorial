@@ -1,7 +1,17 @@
 import React from 'react'
 import { quizDatatype, quizData } from '../data/userData'
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContent';
 
 const Quiz = () => {
+    const { isLoggedIn } = useAuth();
+    const navigate = useNavigate()
+    console.log(isLoggedIn)
+    if (!isLoggedIn) {
+        alert('need to login')
+        navigate('/login/')
+    }
+
     function getQuizData() {
         return quizData.questions.map((val, index) => (
             <label className='question-label' key={val.question.question_id}>

@@ -1,10 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Single from '../assets/single.png'
 import Zero from '../assets/zero.png'
 import Double from '../assets/two.png'
+import { useAuth } from '../AuthContent'
 
 const Home = () => {
+    const { isLoggedIn } = useAuth();
+    const navigate = useNavigate()
+    console.log(isLoggedIn)
+    if (!isLoggedIn) {
+        alert('need to login')
+        navigate('/login/')
+    }
     return (
         <section className='home-section'>
             <Link to={'/unattemptdedquiz/'}>

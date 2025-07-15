@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { rankingDataType, rankingData as rData } from '../data/userData';
+import { useAuth } from '../AuthContent';
 
 
 const Ranking = () => {
+    const { isLoggedIn } = useAuth();
+    const navigate = useNavigate()
+    console.log(isLoggedIn)
+    if (!isLoggedIn) {
+        alert('need to login')
+        navigate('/login/')
+    }
+
     const { quizId } = useParams<{ quizId: string }>();
     const [rankingData, setRankingData] = useState<rankingDataType | null>(null);
     // const [loading, setLoading] = useState<boolean>(false);
