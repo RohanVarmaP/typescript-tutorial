@@ -49,7 +49,7 @@ const ReviewQuiz = () => {
             <label className='question-label' key={val.question.question_id}>
                 <p>{index + 1}. {val.question.question}</p>
 
-                <label className={val.question.correct_answer
+                <label className={val.question.correct_answer == 'A'
                     ? 'correct'
                     : (!val.is_correct && val.user_answer.useranswer === 'A')
                         ? 'wrong'
@@ -62,7 +62,7 @@ const ReviewQuiz = () => {
                 </label>
                 <br />
 
-                <label className={val.question.correct_answer
+                <label className={val.question.correct_answer == 'B'
                     ? 'correct'
                     : (!val.is_correct && val.user_answer.useranswer === 'B')
                         ? 'wrong'
@@ -75,7 +75,7 @@ const ReviewQuiz = () => {
                 </label>
                 <br />
 
-                <label className={val.question.correct_answer
+                <label className={val.question.correct_answer == 'C'
                     ? 'correct'
                     : (!val.is_correct && val.user_answer.useranswer === 'C')
                         ? 'wrong'
@@ -88,7 +88,7 @@ const ReviewQuiz = () => {
                 </label>
                 <br />
 
-                <label className={val.question.correct_answer
+                <label className={val.question.correct_answer == 'D'
                     ? 'correct'
                     : (!val.is_correct && val.user_answer.useranswer === 'D')
                         ? 'wrong'
