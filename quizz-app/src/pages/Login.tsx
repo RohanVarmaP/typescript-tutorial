@@ -1,17 +1,65 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../AuthContent';
 
 const Login = () => {
+    const navigate = useNavigate()
+    const [error, setError] = React.useState('')
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const { setToken } = useAuth();
+
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (typeof username !== 'string' || typeof password !== 'string') {
+            alert('invalid username or password')
+            return
+        }
+        const res = await fetch('http://127.0.0.1:8000/api/login/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            }),
+        });
+        const data = await res.json();
+
+        if (res.ok && data.token) {
+            setToken(data.token);         // Save token in context
+            setError('');
+            navigate('/');                // ✅ Go to home page
+        } else {
+            setError('Invalid credentials. Please try again.'); // ❌ Show error
+        }
+    };
     return (
-        <form className='auth-section'>
+        <form onSubmit={handleLogin} className='auth-section'>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <h4>Login</h4>
             <label htmlFor='username'>
                 Username:
-                <input name='username' id='username' type="text" placeholder='user1' />
+                <input
+                    onChange={(e) => {
+                        setUsername(e.currentTarget.value)
+                    }}
+                    name='username'
+                    id='username'
+                    type="text"
+                    value={username}
+                    placeholder='user1' />
             </label>
             <label htmlFor='password'>
                 Password:
-                <input name='password' id='password' type="password" placeholder='password' />
+                <input
+                    onChange={(e) => {
+                        setPassword(e.currentTarget.value)
+                    }}
+                    name='password'
+                    id='password'
+                    type="password"
+                    value={password}
+                    placeholder='password' />
             </label>
             <button type='submit'>login</button>
             <p>don't have an account? <Link to={'/signup'}>Signup</Link></p>
