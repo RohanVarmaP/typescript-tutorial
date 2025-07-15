@@ -14,7 +14,6 @@ import CompletedQuiz from './pages/CompletedQuiz';
 import { homeData as data, homeDataType, rankingDataType, rankingData as rData } from './data/userData';
 
 function App() {
-  const [homeData, setHomeData] = React.useState<homeDataType>(data)
 
   return (
     <Router>
@@ -23,9 +22,9 @@ function App() {
           <Route path='/login/' element={<Login />} />
           <Route path='/signup/' element={<Signup />} />
           <Route path='/' element={<Home />} />
-          <Route path='/unattemptdedquiz/' element={<UnattemptedQuiz homeData={homeData} />} />
-          <Route path='/singleattemptedquiz/' element={<SingleAttemptQuiz homeData={homeData} />} />
-          <Route path='/completedquiz/' element={<CompletedQuiz homeData={homeData} />} />
+          <Route path='/unattemptdedquiz/' element={<UnattemptedQuiz />} />
+          <Route path='/singleattemptedquiz/' element={<SingleAttemptQuiz />} />
+          <Route path='/completedquiz/' element={<CompletedQuiz />} />
           <Route path='/quiz/:quizId/' element={<Quiz />} />
           <Route path='/quiz/:quizId/review/' element={<ReviewQuiz />} />
           <Route path='/quiz/:quizId/rank/' element={<Ranking />} />

@@ -6,11 +6,12 @@ import { useAuth } from '../AuthContent';
 const Quiz = () => {
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate()
-    console.log(isLoggedIn)
-    if (!isLoggedIn) {
-        alert('need to login')
-        navigate('/login/')
-    }
+    React.useEffect(() => {
+        if (!isLoggedIn) {
+            alert('need to login')
+            navigate('/login/')
+        }
+    }, [])
 
     function getQuizData() {
         return quizData.questions.map((val, index) => (

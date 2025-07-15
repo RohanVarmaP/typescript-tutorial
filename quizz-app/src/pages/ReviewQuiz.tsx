@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 const ReviewQuiz = () => {
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate()
-    console.log(isLoggedIn)
-    if (!isLoggedIn) {
-        alert('need to login')
-        navigate('/login/')
-    }
+    React.useEffect(() => {
+        if (!isLoggedIn) {
+            alert('need to login')
+            navigate('/login/')
+        }
+    }, [])
+
     function getReviewData() {
         return reviewData.questions.map((val, index) => (
             <label className='question-label' key={val.question.question_id}>

@@ -9,11 +9,12 @@ type QuizPropsType = {
 const QuizTable = (props: QuizPropsType) => {
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate()
-    console.log(isLoggedIn)
-    if (!isLoggedIn) {
-        alert('need to login')
-        navigate('/login/')
-    }
+    React.useEffect(() => {
+        if (!isLoggedIn) {
+            alert('need to login')
+            navigate('/login/')
+        }
+    }, [])
 
     const generateQuizData = props.data.map((quiz, index) => (
         <article key={quiz.quiz_id} className='quiz-article'>

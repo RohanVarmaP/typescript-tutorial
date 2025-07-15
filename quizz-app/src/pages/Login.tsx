@@ -3,11 +3,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContent';
 
 const Login = () => {
+    const { isLoggedIn } = useAuth()
     const navigate = useNavigate()
     const [error, setError] = React.useState('')
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const { setToken } = useAuth();
+    React.useEffect(() => {
+        if (isLoggedIn) {
+            alert('already login')
+            navigate('/')
+        }
+    }, [])
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -26,11 +33,11 @@ const Login = () => {
         const data = await res.json();
 
         if (res.ok && data.token) {
-            setToken(data.token);         // Save token in context
+            setToken(data.token);
             setError('');
-            navigate('/');                // ✅ Go to home page
+            navigate('/');
         } else {
-            setError('Invalid credentials. Please try again.'); // ❌ Show error
+            setError('Invalid credentials. Please try again.');
         }
     };
     return (

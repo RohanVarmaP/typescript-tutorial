@@ -7,11 +7,12 @@ import { useAuth } from '../AuthContent';
 const Ranking = () => {
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate()
-    console.log(isLoggedIn)
-    if (!isLoggedIn) {
-        alert('need to login')
-        navigate('/login/')
-    }
+    React.useEffect(() => {
+        if (!isLoggedIn) {
+            alert('need to login')
+            navigate('/login/')
+        }
+    }, [])
 
     const { quizId } = useParams<{ quizId: string }>();
     const [rankingData, setRankingData] = useState<rankingDataType | null>(null);

@@ -8,11 +8,13 @@ import { useAuth } from '../AuthContent'
 const Home = () => {
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate()
-    console.log(isLoggedIn)
-    if (!isLoggedIn) {
-        alert('need to login')
-        navigate('/login/')
-    }
+    React.useEffect(() => {
+        if (!isLoggedIn) {
+            alert('need to login')
+            navigate('/login/')
+        }
+    }, [])
+
     return (
         <section className='home-section'>
             <Link to={'/unattemptdedquiz/'}>
