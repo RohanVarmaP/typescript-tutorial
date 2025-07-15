@@ -11,7 +11,7 @@ import Quiz from './pages/Quiz';
 import ReviewQuiz from './pages/ReviewQuiz';
 import Ranking from './pages/Ranking';
 import CompletedQuiz from './pages/CompletedQuiz';
-import { homeData as data, homeDataType } from './data/userData';
+import { homeData as data, homeDataType, rankingDataType, rankingData as rData } from './data/userData';
 
 function App() {
   const [homeData, setHomeData] = React.useState<homeDataType>(data)
@@ -26,9 +26,9 @@ function App() {
           <Route path='/unattemptdedquiz/' element={<UnattemptedQuiz homeData={homeData} />} />
           <Route path='/singleattemptedquiz/' element={<SingleAttemptQuiz homeData={homeData} />} />
           <Route path='/completedquiz/' element={<CompletedQuiz homeData={homeData} />} />
-          <Route path='/quiz/' element={<Quiz />} />
-          <Route path='/review/' element={<ReviewQuiz />} />
-          <Route path='/ranking/' element={<Ranking />} />
+          <Route path='/quiz/:quizId/' element={<Quiz />} />
+          <Route path='/quiz/:quizId/review/' element={<ReviewQuiz />} />
+          <Route path='/quiz/:quizId/rank/' element={<Ranking />} />
         </Route>
       </Routes>
     </Router>

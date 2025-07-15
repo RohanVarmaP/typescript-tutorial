@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 const Layout = () => {
     return (
         <>
-            <header><Navbar /></header>
+            <Navbar />
             <main><Outlet /></main>
         </>
     )
