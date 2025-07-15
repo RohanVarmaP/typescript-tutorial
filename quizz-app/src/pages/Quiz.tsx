@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { quizDatatype, quizData } from '../data/userData'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../AuthContent';
 
 const Quiz = () => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, token } = useAuth();
+    const [data, setData] = useState<quizDatatype | null>(null);
+    const [error, setError] = useState<string>('')
+    const { quizId } = useParams()
+    console.log(quizId)
     const navigate = useNavigate()
     React.useEffect(() => {
         if (!isLoggedIn) {
@@ -13,8 +17,38 @@ const Quiz = () => {
         }
     }, [])
 
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(`http://127.0.0.1:8000/api/quiz/${quizId}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Token ${token}`
+                    }
+                });
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch protected data');
+                }
+
+                const result: quizDatatype = await res.json();
+                setData(result);
+            } catch (err: any) {
+                setError(err.message);
+            }
+        };
+
+        if (token) {
+            fetchData();
+        }
+    }, [token]);
+
+    if (error) return <p style={{ color: 'red' }}>{error}</p>;
+    if (!data || typeof data === null) return <p>Loading...</p>;
+
     function getQuizData() {
-        return quizData.questions.map((val, index) => (
+        if (!data || typeof data === null) return <p>Loading...</p>;
+        return data.questions.map((val, index) => (
             <label className='question-label' key={val.question.question_id}>
                 <p>{index + 1}. {val.question.question}</p>
 
@@ -48,8 +82,8 @@ const Quiz = () => {
     return (
         <>
             <form className='quiz-section'>
-                <h2>{quizData.quiz_name}</h2>
-                <h4>{quizData.username}</h4>
+                <h2>{data.quiz_name}</h2>
+                <h4>{data.username}</h4>
 
                 {getQuizData()}
 

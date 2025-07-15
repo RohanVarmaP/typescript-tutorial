@@ -1,11 +1,13 @@
 import React from 'react'
-import { reviewData } from '../data/userData'
+import { reviewData, reviewDatatype } from '../data/userData'
 import { useAuth } from '../AuthContent';
 import { useNavigate } from 'react-router-dom';
 
 const ReviewQuiz = () => {
     const { isLoggedIn } = useAuth();
     const navigate = useNavigate()
+    const [data, setData] = React.useState<reviewDatatype | null>(null);
+    const [error, setError] = React.useState<string>('')
     React.useEffect(() => {
         if (!isLoggedIn) {
             alert('need to login')
