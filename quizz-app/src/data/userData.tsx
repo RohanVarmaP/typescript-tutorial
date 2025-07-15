@@ -31,17 +31,29 @@ export type rankingDataType = {
     "results": marksType[]
 }
 
+type questionOnlyType = {
+    "question_id": string,
+    "question": string,
+    "option_a": string,
+    "option_b": string,
+    "option_c": string,
+    "option_d": string,
+    'correct_answer': string | null
+}
+
 export type questionType = {
-    "question": {
-        "question_id": string,
-        "question": string,
-        "option_a": string,
-        "option_b": string,
-        "option_c": string,
-        "option_d": string
-    }
+    "question": questionOnlyType,
+    "user_answer": {
+        "useranswer": string
+    },
+    "is_correct": boolean
 }
 export type quizDatatype = {
+    "username": string,
+    "quiz_name": string,
+    "questions": { question: Omit<questionOnlyType, 'correct_answer'> }[]
+}
+export type reviewDatatype = {
     "username": string,
     "quiz_name": string,
     "questions": questionType[]
@@ -341,6 +353,208 @@ export const quizData: quizDatatype = {
                 "option_c": "Red",
                 "option_d": "Green"
             }
+        }
+    ]
+}
+
+export const reviewData: reviewDatatype = {
+    "username": "user1",
+    "quiz_name": "Science & Nature",
+    "questions": [
+        {
+            "question": {
+                "question_id": "0222eefa-26f5-45b9-a57e-fa6d00b1ac09",
+                "question": "What is the capital of France?",
+                "option_a": "Paris",
+                "option_b": "London",
+                "option_c": "Berlin",
+                "option_d": "Rome",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "046d1930-c081-4d64-923b-311ced57c39c",
+                "question": "Which number is a prime?",
+                "option_a": "2",
+                "option_b": "4",
+                "option_c": "6",
+                "option_d": "8",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "39b9f3ff-4397-49a8-94db-91223b18299d",
+                "question": "Who wrote the book '1984'",
+                "option_a": "George Orwell",
+                "option_b": "J.K. Rowling",
+                "option_c": "Mark Twain",
+                "option_d": "Ernest Hemingway",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "D"
+            },
+            "is_correct": false
+        },
+        {
+            "question": {
+                "question_id": "4bd59033-2547-4e04-9e26-0abd1e6326c2",
+                "question": "What is the capital of Japan?",
+                "option_a": "Tokyo",
+                "option_b": "Beijing",
+                "option_c": "Seoul",
+                "option_d": "Bangkok",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "4f5b8efc-b3bc-4489-bb56-8c7039492e10",
+                "question": "What is the capital of France?",
+                "option_a": "Paris",
+                "option_b": "London",
+                "option_c": "Berlin",
+                "option_d": "Rome",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "703fb2f5-6c39-469d-978b-313b549f3778",
+                "question": "What color do you get when you mix Blue and Green?",
+                "option_a": "Cyan",
+                "option_b": "Red",
+                "option_c": "Orange",
+                "option_d": "Violet",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "D"
+            },
+            "is_correct": false
+        },
+        {
+            "question": {
+                "question_id": "7cf249f4-b330-470f-bdd6-4a00f35d470b",
+                "question": "Which number is a prime?",
+                "option_a": "11",
+                "option_b": "10",
+                "option_c": "12",
+                "option_d": "14",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "a0677438-a461-4e0a-acd3-dbfe85971bbf",
+                "question": "Who wrote the book 'The Hobbit'",
+                "option_a": "J.R.R. Tolkien",
+                "option_b": "C.S. Lewis",
+                "option_c": "Stephen King",
+                "option_d": "Dan Brown",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "C"
+            },
+            "is_correct": false
+        },
+        {
+            "question": {
+                "question_id": "baaa1cc0-1b14-4b54-9b90-76e26542a39d",
+                "question": "Which number is a prime?",
+                "option_a": "17",
+                "option_b": "15",
+                "option_c": "20",
+                "option_d": "21",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "baf53816-f119-4515-b797-9049c3234a7f",
+                "question": "Who wrote the book 'Hamlet'",
+                "option_a": "William Shakespeare",
+                "option_b": "Arthur Conan Doyle",
+                "option_c": "Oscar Wilde",
+                "option_d": "Leo Tolstoy",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "B"
+            },
+            "is_correct": false
+        },
+        {
+            "question": {
+                "question_id": "bee8f6bc-e9f5-48e8-a06f-1fefbce49edd",
+                "question": "What color do you get when you mix White and Black?",
+                "option_a": "Gray",
+                "option_b": "Blue",
+                "option_c": "Red",
+                "option_d": "Green",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "d13e048a-e3d0-43d0-a807-e87582f9160c",
+                "question": "Which number is a prime?",
+                "option_a": "17",
+                "option_b": "15",
+                "option_c": "20",
+                "option_d": "21",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
+        },
+        {
+            "question": {
+                "question_id": "dc422b65-33b5-42a6-8490-b73d55596d2d",
+                "question": "What color do you get when you mix White and Black?",
+                "option_a": "Gray",
+                "option_b": "Blue",
+                "option_c": "Red",
+                "option_d": "Green",
+                "correct_answer": null
+            },
+            "user_answer": {
+                "useranswer": "A"
+            },
+            "is_correct": true
         }
     ]
 }

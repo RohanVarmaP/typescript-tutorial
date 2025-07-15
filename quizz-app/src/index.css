@@ -67,6 +67,7 @@ main {
 
 
 .auth-section {
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   aspect-ratio: 1 / 1;
@@ -313,3 +314,5 @@ main {
 .quiz-section>button:hover {
   background-color: #1D4ED8;
 }
+
+.review-question-
