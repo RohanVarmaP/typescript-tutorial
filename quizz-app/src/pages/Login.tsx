@@ -6,9 +6,9 @@ const Login = () => {
     const { isLoggedIn } = useAuth()
     const navigate = useNavigate()
     const [error, setError] = React.useState('')
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const { setToken } = useAuth();
+    const [username, setUsername] = React.useState('')
+    const [password, setPassword] = React.useState('')
+    const { setToken } = useAuth()
     React.useEffect(() => {
         if (isLoggedIn) {
             alert('already login')
