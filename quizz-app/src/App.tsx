@@ -11,7 +11,6 @@ import Quiz from './pages/Quiz';
 import ReviewQuiz from './pages/ReviewQuiz';
 import Ranking from './pages/Ranking';
 import CompletedQuiz from './pages/CompletedQuiz';
-import { homeData as data, homeDataType, rankingDataType, rankingData as rData } from './data/userData';
 
 function App() {
 
@@ -19,15 +18,15 @@ function App() {
     <Router>
       <Routes>
         <Route element={<Layout />}>
-          <Route path='/login/' element={<Login />} />
-          <Route path='/signup/' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
           <Route path='/' element={<Home />} />
-          <Route path='/unattemptdedquiz/' element={<UnattemptedQuiz />} />
-          <Route path='/singleattemptedquiz/' element={<SingleAttemptQuiz />} />
-          <Route path='/completedquiz/' element={<CompletedQuiz />} />
-          <Route path='/quiz/:quizId/' element={<Quiz />} />
-          <Route path='/quiz/:quizId/review/' element={<ReviewQuiz />} />
-          <Route path='/quiz/:quizId/rank/' element={<Ranking />} />
+          <Route path='/unattemptdedquiz' element={<UnattemptedQuiz />} />
+          <Route path='/singleattemptedquiz' element={<SingleAttemptQuiz />} />
+          <Route path='/completedquiz' element={<CompletedQuiz />} />
+          <Route path='/quiz/:quizId' element={<Quiz />} />
+          <Route path='/quiz/:quizId/review' element={<ReviewQuiz />} />
+          <Route path='/quiz/:quizId/rank' element={<Ranking />} />
         </Route>
       </Routes>
     </Router>

@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Breadcrumbs from './Breadcrumbs'
 
 const Navbar = () => {
     return (
         <nav>
-            <Link to={'/'}><button>Home</button></Link>
-            <Link to={'/login'}><button>Login</button></Link>
+
+            <div className='left'>
+                <Breadcrumbs />
+            </div>
+            <div className='right'><Link to={'/login'}>Login</Link></div>
         </nav>
     )
 }

@@ -37,8 +37,9 @@ nav {
   z-index: 100;
 }
 
-
-nav>a>button {
+nav>div>a,
+nav>div>span>a {
+  text-decoration: none;
   font-family: Inter;
   background-color: #2563EB;
   margin: 10px;
@@ -49,7 +50,8 @@ nav>a>button {
   cursor: pointer;
 }
 
-nav>a>button:hover {
+nav>div>a:hover,
+nav>div>span>a:hover {
   background-color: #1D4ED8;
 }
 
