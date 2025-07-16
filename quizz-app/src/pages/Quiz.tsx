@@ -31,7 +31,7 @@ const Quiz = () => {
         }
     }
 
-    console.log(answers)
+    // console.log(answers)
     React.useEffect(() => {
         if (!isLoggedIn) {
             alert('need to login')
