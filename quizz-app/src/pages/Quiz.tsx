@@ -12,14 +12,23 @@ type answerType = {
 }
 
 const Quiz = () => {
+    const quizAnswers = localStorage.getItem('quizWithAnswers')
+    const quizWithAnswers = quizAnswers ? JSON.parse(quizAnswers) : null
     const { isLoggedIn, token } = useAuth();
     const [data, setData] = useState<quizDatatype | null>(null);
     const [error, setError] = useState<string>('')
     const [answers, setAnswers] = useState<answerType | null>(null)
-    const [answer, setAnswer] = useState<{ [questionId: string]: string }>({})
     const [loading, setLoading] = useState(false);
     const { quizId } = useParams()
     const navigate = useNavigate()
+    const [answer, setAnswer] = useState<{ [questionId: string]: string }>(setAnswerValue())
+    function setAnswerValue(): { [questionId: string]: string } {
+        if (quizWithAnswers && quizWithAnswers.quizId === quizId) {
+            return quizWithAnswers.answer
+        } else {
+            return {}
+        }
+    }
 
     console.log(answers)
     React.useEffect(() => {
@@ -38,6 +47,7 @@ const Quiz = () => {
             })
         })
         setAnswers({ answers: useranswers })
+        localStorage.setItem('quizWithAnswers', JSON.stringify({ quizId: quizId, answer: answer }))
     }, [answer])
 
     React.useEffect(() => {
