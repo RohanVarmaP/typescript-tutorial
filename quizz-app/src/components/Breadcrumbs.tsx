@@ -1,4 +1,3 @@
-import { log } from 'console';
 import path from 'path';
 import React from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
