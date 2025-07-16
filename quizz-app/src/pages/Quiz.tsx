@@ -7,6 +7,7 @@ type singleAnswerType = {
     "question_id": string,
     "useranswer": string
 }
+
 type answerType = {
     "answers": singleAnswerType[]
 }
