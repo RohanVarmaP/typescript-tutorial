@@ -81,7 +81,7 @@ const Breadcrumbs = () => {
 
     React.useEffect(() => {
         const breadcrumb: pathnameType = { path: pathname, name: getName(pathname) }
-        console.log('breadcrumb: ', breadcrumb)
+        // console.log('breadcrumb: ', breadcrumb)
         addToBreadcrumbList(breadcrumb, breadcrumbList)
         // console.log('breadcrumbList: ', breadcrumbList)
     }, [location])
