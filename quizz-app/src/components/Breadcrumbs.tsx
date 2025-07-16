@@ -30,7 +30,7 @@ const Breadcrumbs = () => {
             <Link to={value.path}>{value.name}</Link>
             {index < pathnames.length - 1 && ' / '}
         </span>)))
-    console.log('breadcrumbs: ', breadcrumbs)
+    // console.log('breadcrumbs: ', breadcrumbs)
 
     const breadcrumbMap: { [key: string]: string } = {
         '': 'Home',
