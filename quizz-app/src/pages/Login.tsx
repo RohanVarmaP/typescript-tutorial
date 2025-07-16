@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../AuthContent';
 
 const Login = () => {
-    const { isLoggedIn } = useAuth()
+    const { isLoggedIn, token } = useAuth()
     const navigate = useNavigate()
     const [error, setError] = React.useState('')
     const [username, setUsername] = React.useState<string>('')
@@ -11,8 +11,23 @@ const Login = () => {
     const { setToken } = useAuth()
     React.useEffect(() => {
         if (isLoggedIn) {
-            alert('already login')
-            navigate('/')
+            const confirmLogout = window.confirm('You are already logged in. Do you wish to logout?')
+            if (confirmLogout) {
+                fetch('http://127.0.0.1:8000/logout/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // if you're using Token auth
+                        Authorization: `Token ${token}`
+                    },
+                })
+                setToken(token);
+                setError('Logged out successfully');
+            } else {
+                alert('already login')
+                navigate('/')
+
+            }
         }
     }, [])
 

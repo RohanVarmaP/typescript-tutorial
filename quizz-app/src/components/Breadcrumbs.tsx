@@ -60,13 +60,12 @@ const Breadcrumbs = () => {
     function addToBreadcrumbList(breadcrumb: pathnameType, breadcrumbList: pathnameType[]) {
         if (breadcrumb.name) {
             const foundIndex = breadcrumbList.findIndex(b => b.name === breadcrumb.name);
-
             if (foundIndex === -1) {
                 const newList = [...breadcrumbList, breadcrumb]
                 setBreadcrumbList(newList)
             } else if ((foundIndex + 1) < breadcrumbList.length) {
                 const newList =
-                    breadcrumbList.splice(0, foundIndex);
+                    breadcrumbList.splice(0, foundIndex + 1);
                 setBreadcrumbList(newList)
             }
             localStorage.setItem('localList', JSON.stringify(breadcrumbList))
@@ -88,7 +87,7 @@ const Breadcrumbs = () => {
         setBreadcrumbs(breadcrumbList.map((value, index) => (
             <span key={value.path}>
                 <Link to={value.path}>{value.name}</Link>
-                {' > '}
+                {index + 1 === breadcrumbList.length ? '' : ' > '}
             </span>)))
     }, [breadcrumbList])
     return (
