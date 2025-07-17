@@ -25,7 +25,7 @@ const Clues = (props: cluePropsType) => {
             )
         } else {
             const clues: singleClueType = single.filter(value => value.word == props.currentWord)[0]
-            console.log(clues)
+            // console.log(clues)
             return (
                 <>
                     <div>

@@ -65,7 +65,7 @@ const Game = (props: GamePropsType) => {
         setStartOrEnd('started')
         setDifficulty(getDifficulty())
         props.setIsgameWon(false)
-        console.log(difficulty)
+        // console.log(difficulty)
         props.newGame()
     }, [])
 
