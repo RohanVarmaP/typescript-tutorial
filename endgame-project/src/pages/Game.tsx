@@ -58,6 +58,7 @@ const Game = (props: GamePropsType) => {
                 ...DateTimeComponent(),
                 difficulty: difficulty,
                 timeTaken: timeTakenInSeconds,
+                wrongGuessCount: props.wrongGuessCount,
             };
             props.setRankingList(prev => [...prev, timeObj])
             console.log('🏆 Game won!', timeObj);

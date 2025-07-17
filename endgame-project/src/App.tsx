@@ -11,8 +11,9 @@ export type scoretype = {
   date: string,
   time: string,
   difficulty: string,
-  timeTaken: number
+  timeTaken: number,
 }
+
 function App() {
 
   function getRankingList() {
