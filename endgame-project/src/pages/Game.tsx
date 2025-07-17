@@ -38,7 +38,17 @@ const Game = (props: GamePropsType) => {
     const difficultyVal = new URLSearchParams(location.search)
     const valOFdifficulty = String(difficultyVal.get('difficulty'))
     const valFromLocal = localStorage.getItem('difficulty')
-    const [difficulty, setDifficulty] = React.useState<string>('')
+    const finalDiffVal = valOFdifficulty || valFromLocal || 'easy'
+    if (valOFdifficulty) {
+        const finalDiffVal = (valOFdifficulty)
+        localStorage.setItem('difficulty', finalDiffVal)
+    } else if (valFromLocal) {
+        const finalDiffVal = (valFromLocal)
+    } else {
+        const finalDiffVal = 'easy';
+    }
+    const [difficulty, setDifficulty] = React.useState<string>(finalDiffVal)
+    console.log(difficulty)
     const [startTime, setStartTime] = React.useState<number>(Date.now());
     // console.log(difficulty)
 
@@ -55,6 +65,7 @@ const Game = (props: GamePropsType) => {
             setDifficulty('easy')
         )
         props.setIsgameWon(false)
+        console.log('hello')
         console.log(difficulty)
         props.newGame()
     }, [])
