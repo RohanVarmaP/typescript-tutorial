@@ -12,6 +12,7 @@ export type scoretype = {
   time: string,
   difficulty: string,
   timeTaken: number,
+  wrongGuessCount: number,
 }
 
 function App() {

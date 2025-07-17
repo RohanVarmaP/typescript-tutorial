@@ -7,7 +7,12 @@ const Ranking = ({ rankingList }: { rankingList: scoretype[] }) => {
     const getSortedScores = (difficulty: string) => {
         return rankingList
             .filter(score => score.difficulty === difficulty)
-            .sort((a, b) => a.timeTaken - b.timeTaken);
+            .sort((a, b) => {
+                if (a.wrongGuessCount !== b.wrongGuessCount) {
+                    return a.wrongGuessCount - b.wrongGuessCount; // Fewer wrong guesses first
+                }
+                return a.timeTaken - b.timeTaken; // Break tie using time taken
+            });
     };
 
     const formatTime = (seconds: number) => {
