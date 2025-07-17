@@ -47,7 +47,7 @@ const Game = (props: GamePropsType) => {
         setDifficulty(String(difficultyVal.get('difficulty')))
         props.setIsgameWon(false)
         props.newGame()
-    }, [startOrEnd])
+    }, [])
 
     React.useEffect(() => {
         if (props.isgameWon && startOrEnd === 'started') {
