@@ -55,6 +55,7 @@ const Game = (props: GamePropsType) => {
             setDifficulty('easy')
         )
         props.setIsgameWon(false)
+        console.log(difficulty)
         props.newGame()
     }, [])
 
