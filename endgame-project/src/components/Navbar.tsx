@@ -7,7 +7,7 @@ const Navbar = () => {
             <Link to={'/'}>
                 <button className='nav-buttons'>home</button>
             </Link>
-            <Link to={'/game?difficulty=easy'}>
+            <Link to={'/game'}>
                 <button className='nav-buttons'>New Game</button>
             </Link>
             <Link to={'/ranking'}>

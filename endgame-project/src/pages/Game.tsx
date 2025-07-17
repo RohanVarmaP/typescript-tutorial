@@ -36,7 +36,9 @@ const Game = (props: GamePropsType) => {
     }, [props.isgameWon]);
     const location = useLocation()
     const difficultyVal = new URLSearchParams(location.search)
-    const [difficulty, setDifficulty] = React.useState<string>(String(difficultyVal.get('difficulty')))
+    const valOFdifficulty = String(difficultyVal.get('difficulty'))
+    const valFromLocal = localStorage.getItem('difficulty')
+    const [difficulty, setDifficulty] = React.useState<string>('')
     const [startTime, setStartTime] = React.useState<number>(Date.now());
     // console.log(difficulty)
 
@@ -44,7 +46,14 @@ const Game = (props: GamePropsType) => {
     React.useEffect(() => {
         alert('a new game will start')
         setStartOrEnd('started')
-        setDifficulty(String(difficultyVal.get('difficulty')))
+        if (valOFdifficulty) {
+            setDifficulty(String(difficultyVal.get('difficulty')))
+            localStorage.setItem('difficulty', valOFdifficulty)
+        } else if (valFromLocal) {
+            setDifficulty(valFromLocal)
+        } else (
+            setDifficulty('easy')
+        )
         props.setIsgameWon(false)
         props.newGame()
     }, [])
