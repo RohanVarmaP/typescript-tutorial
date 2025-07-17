@@ -34,21 +34,28 @@ const Game = (props: GamePropsType) => {
             }, 2000)
         }
     }, [props.isgameWon]);
+
     const location = useLocation()
     const difficultyVal = new URLSearchParams(location.search)
     const valOFdifficulty = String(difficultyVal.get('difficulty'))
     const valFromLocal = localStorage.getItem('difficulty')
-    const finalDiffVal = valOFdifficulty || valFromLocal || 'easy'
-    if (valOFdifficulty) {
-        const finalDiffVal = (valOFdifficulty)
-        localStorage.setItem('difficulty', finalDiffVal)
-    } else if (valFromLocal) {
-        const finalDiffVal = (valFromLocal)
-    } else {
-        const finalDiffVal = 'easy';
+    function getDifficulty() {
+        if (valOFdifficulty && valOFdifficulty !== 'null') {
+            // console.log('from param')
+            // console.log(valOFdifficulty)
+            localStorage.setItem('difficulty', valOFdifficulty)
+            return valOFdifficulty
+        } else if (valFromLocal) {
+            // console.log('from local')
+            // console.log(valFromLocal)
+            return valFromLocal
+        } else {
+            // console.log('from default')
+            return 'easy'
+        }
     }
-    const [difficulty, setDifficulty] = React.useState<string>(finalDiffVal)
-    console.log(difficulty)
+    const [difficulty, setDifficulty] = React.useState<string>(getDifficulty())
+    // console.log(difficulty)
     const [startTime, setStartTime] = React.useState<number>(Date.now());
     // console.log(difficulty)
 
@@ -56,16 +63,8 @@ const Game = (props: GamePropsType) => {
     React.useEffect(() => {
         alert('a new game will start')
         setStartOrEnd('started')
-        if (valOFdifficulty) {
-            setDifficulty(String(difficultyVal.get('difficulty')))
-            localStorage.setItem('difficulty', valOFdifficulty)
-        } else if (valFromLocal) {
-            setDifficulty(valFromLocal)
-        } else (
-            setDifficulty('easy')
-        )
+        setDifficulty(getDifficulty())
         props.setIsgameWon(false)
-        console.log('hello')
         console.log(difficulty)
         props.newGame()
     }, [])
