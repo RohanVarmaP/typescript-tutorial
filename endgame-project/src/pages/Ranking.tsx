@@ -40,6 +40,7 @@ const Ranking = ({ rankingList }: { rankingList: scoretype[] }) => {
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Time Taken</th>
+                                            <th>No.Of Wrong guesses</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +50,7 @@ const Ranking = ({ rankingList }: { rankingList: scoretype[] }) => {
                                                 <td>{score.date}</td>
                                                 <td>{score.time}</td>
                                                 <td>{formatTime(score.timeTaken)}</td>
+                                                <td>{score.wrongGuessCount}</td>
                                             </tr>
                                         ))}
                                     </tbody>
