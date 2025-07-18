@@ -62,7 +62,7 @@ const Quiz = () => {
                 });
 
                 if (!res.ok) {
-                    throw new Error('Failed to fetch protected data');
+                    throw new Error('Failed to fetch prot ected data');
                 }
 
                 const result: quizDatatype = await res.json();
