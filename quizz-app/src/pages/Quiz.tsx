@@ -95,7 +95,7 @@ const Quiz = () => {
 
                 <label>
                     <input
-                        type='radio'
+                        type='rad io'
                         name={val.question.question_id}
                         value="A"
                         checked={answer[val.question.question_id] === 'A'}
