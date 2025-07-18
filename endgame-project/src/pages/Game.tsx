@@ -54,12 +54,15 @@ const Game = (props: GamePropsType) => {
 
 
     React.useEffect(() => {
-        alert('a new game will start')
-        setDifficulty(getDifficulty())
-        props.setIsgameWon(false)
-        setStartOrEnd('started')
-        // console.log(difficulty)
-        props.newGame()
+        const delayStart = setTimeout(() => {
+            alert('A new game will start');
+            setDifficulty(getDifficulty());
+            setStartOrEnd('started');
+            props.setIsgameWon(false); // 👈 important
+            props.newGame();
+        }, 100); // small delay to let state settle
+
+        return () => clearTimeout(delayStart);
     }, [])
 
     React.useEffect(() => {

@@ -62,6 +62,7 @@ function App() {
   }
 
   function newGame(): void {
+    setIsgameWon(false);
     setCurrentWord(getRandomWord());
     setLetterGuessed([]);
   }
