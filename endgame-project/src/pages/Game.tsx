@@ -27,13 +27,6 @@ type GamePropsType = {
 const Game = (props: GamePropsType) => {
     const [startOrEnd, setStartOrEnd] = React.useState<'started' | 'ended'>('started')
     const navigate = useNavigate()
-    React.useEffect(() => {
-        if (props.isgameWon) {
-            setTimeout(() => {
-                navigate('/ranking');
-            }, 2000)
-        }
-    }, [props.isgameWon]);
 
     const location = useLocation()
     const difficultyVal = new URLSearchParams(location.search)
