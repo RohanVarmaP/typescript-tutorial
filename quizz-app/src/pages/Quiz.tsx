@@ -56,7 +56,7 @@ const Quiz = () => {
             try {
                 const res = await fetch(`http://127.0.0.1:8000/api/quiz/${quizId}`, {
                     headers: {
-                        'Content-Typ e': 'application/json',
+                        'Content-Type': 'application/json',
                         'Authorization': `Token ${token}`
                     }
                 });
