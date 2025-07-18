@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { quizDatatype, quizData } from '../data/userData'
-import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '../AuthContent';
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../AuthContent'
 
 type singleAnswerType = {
     "question_id": string,

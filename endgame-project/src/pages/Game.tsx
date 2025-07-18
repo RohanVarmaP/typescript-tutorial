@@ -62,9 +62,9 @@ const Game = (props: GamePropsType) => {
 
     React.useEffect(() => {
         alert('a new game will start')
-        setStartOrEnd('started')
         setDifficulty(getDifficulty())
         props.setIsgameWon(false)
+        setStartOrEnd('started')
         // console.log(difficulty)
         props.newGame()
     }, [])
