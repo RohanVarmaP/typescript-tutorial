@@ -90,7 +90,7 @@ const Quiz = () => {
     function getQuizData() {
         if (!data || typeof data === null) return <p>Loading...</p>;
         return data.questions.map((val, index) => (
-            <div className='question-label' key={val.question.question_id}>
+            <div className='question -label' key={val.question.question_id}>
                 <p>{index + 1}. {val.question.question}</p>
 
                 <label>
