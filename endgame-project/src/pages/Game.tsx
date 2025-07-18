@@ -41,7 +41,7 @@ const Game = (props: GamePropsType) => {
     const valFromLocal = localStorage.getItem('difficulty')
     function getDifficulty() {
         if (valOFdifficulty && valOFdifficulty !== 'null') {
-            console.log('from param')
+            // console.log('from param')
             // console.log(valOFdifficulty)
             localStorage.setItem('difficulty', valOFdifficulty)
             return valOFdifficulty
