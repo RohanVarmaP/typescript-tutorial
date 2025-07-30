@@ -34,7 +34,7 @@ main {
 
 header {
   text-align: center;
-  width: 50%;
+  width: 70%;
   height: 100px;
   overflow: hidden;
 }
@@ -173,6 +173,22 @@ header>p {
 }
 
 @media (max-width: 500px) {
+  header>h1 {
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    font-size: 1.25rem;
+    color: #F9F4DA;
+    font-weight: 500;
+  }
+
+  header>p {
+    margin: 0px;
+    padding: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #8E8E8E;
+  }
+
   .key {
     background-color: #1d3557;
     color: #fff;
@@ -211,6 +227,22 @@ header>p {
 }
 
 @media (max-width: 360px) {
+  header>h1 {
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    font-size: 1.25rem;
+    color: #F9F4DA;
+    font-weight: 500;
+  }
+
+  header>p {
+    margin: 0px;
+    padding: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #8E8E8E;
+  }
+
   .key {
     background-color: #1d3557;
     color: #fff;
@@ -338,6 +370,11 @@ nav {
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
+  padding: 0px;
+}
+
+.grid {
+  padding: 5px;
 }
 
 .title {
